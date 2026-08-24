@@ -47,9 +47,17 @@ Select: """)
         print("Invalid choice")
         continue
 
+
     if command in ["ping", "tracert", "nslookup"]:
         host = input("Enter host: ")
+
+        if not host.strip():
+             print("Missing parameter")
+             continue
+
         command = command + " " + host
+
+
 
     client_socket = socket(AF_INET, SOCK_STREAM)
     client_socket.connect((SERVER_NAME, SERVER_PORT))

@@ -20,7 +20,6 @@ def handle_client(connection_socket):
 
     parts = message.split()
 
-
     allowedCommands = ["ping", "tracert", "nslookup", "ipconfig", "route", "arp", "netstat", "exit"]
 
     if not parts:
@@ -49,26 +48,36 @@ def handle_client(connection_socket):
 
     timestamp = datetime.now()
 
-    if command == "ping":
-        result = ping(parts[1])
+    try:
+        if command == "ping":
+            result = ping(parts[1])
 
-    elif command == "tracert":
-        result = tracert(parts[1])
+        elif command == "tracert":
+            result = tracert(parts[1])
 
-    elif command == "nslookup":
-        result = nslookup(parts[1])
+        elif command == "nslookup":
+            result = nslookup(parts[1])
 
-    elif command == "ipconfig":
-        result = ipconfig()
+        elif command == "ipconfig":
+            result = ipconfig()
 
-    elif command == "route":
-        result = route()
+        elif command == "route":
+            result = route()
 
-    elif command == "arp":
-        result = arp()
+        elif command == "arp":
+            result = arp()
 
-    elif command == "netstat":
-        result = netstat()
+        elif command == "netstat":
+            result = netstat()
+
+        if result.returncode == 0:
+            status = "Success"
+        else:
+            status = "Failure"
+
+    except Exception as e:
+        status = "Failure"
+        result = None
 
     if result.returncode == 0:
         status = "Success"
@@ -103,16 +112,16 @@ def ipconfig():#show the info of the network on ur device like ip address,dns, a
     return result
 
 def route():#show a routing table that the sender device take it as evidence to arrived to the destination
-    result = subprocess.run(["route"], capture_output=True,text=True)
+    result = subprocess.run(["route", "print"], capture_output=True, text=True)
     return result
 
 def arp():#showing the relation b/t ip address and mac address that are exist in the arp chach
     # (to know the mac for the destination device)
-    result = subprocess.run(["arp"], capture_output=True,text=True)
+    result = subprocess.run(["arp", "-a"], capture_output=True, text=True)
     return result
 
 def netstat():#showing the current connection server and info about tcp or udp
-    result = subprocess.run(["netstat"], capture_output=True,text=True)
+    result = subprocess.run(["netstat", "-ano"], capture_output=True, text=True)
     return result
 #----------------------------------------------------------------------------------------
 
