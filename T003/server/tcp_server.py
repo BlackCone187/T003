@@ -141,6 +141,3 @@ while True:
     )
 
     thread.start()
-
-
-    

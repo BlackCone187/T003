@@ -1,6 +1,6 @@
 from socket import *
 server_name = gethostname ()
-server_port = 5566
+server_port = 5462
 client_socket = socket (AF_INET, SOCK_STREAM)
 client_socket. connect ( (server_name, server_port) )
 welcome = input ('''========================
