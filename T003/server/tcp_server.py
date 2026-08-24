@@ -3,8 +3,9 @@ import threading
 import subprocess
 import time
 from datetime import datetime
+from logger import log_request
 
-SERVER_PORT = 5780
+SERVER_PORT = 5462
 
 server_socket = socket(AF_INET, SOCK_STREAM)#make tcp socket that use IPv4
 
@@ -13,7 +14,7 @@ server_socket.bind(('', SERVER_PORT))# link a socket with port number
 server_socket.listen(5)
 
 
-def handle_client(connection_socket):
+def handle_client(connection_socket, client_address):
     message = connection_socket.recv(1024).decode()
 
     print("Client sent:", message)
@@ -28,6 +29,7 @@ def handle_client(connection_socket):
         return
 
     command = parts[0]
+    parameter = parts[1] if len(parts) > 1 else ""
 
     if command not in allowedCommands:
         print("Command not allowed")
@@ -78,6 +80,16 @@ def handle_client(connection_socket):
     end_time = time.time()
     execution_time = end_time - start_time
 
+    log_request({
+    "timestamp": str(timestamp),
+    "client_ip": client_address[0],
+    "client_port": client_address[1],
+    "command": command,
+    "parameter": parameter,
+    "execution_time": execution_time,
+    "result": status
+})
+
     response = (f"Command: {command} | Status: {status} | Execution Time: {execution_time:.4f} "
                 f"seconds | Timestamp: {timestamp} | Output: {result.stdout}")
     connection_socket.send(response.encode())
@@ -125,7 +137,10 @@ while True:
 
     thread = threading.Thread(
         target=handle_client,
-        args=(connection_socket,)
+        args=(connection_socket, client_address)
     )
 
     thread.start()
+
+
+    

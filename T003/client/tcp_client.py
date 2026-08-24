@@ -1,7 +1,7 @@
 from socket import *
 
 SERVER_NAME = "localhost"
-SERVER_PORT = 5780
+SERVER_PORT = 57462
 
 while True:
 
