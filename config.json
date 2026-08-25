@@ -1,7 +1,0 @@
-{
-    "tcp_port": 5462,
-    "http_port": 6462,
-    "log_file": "logs/server_log.json",
-    "max_clients": 10,
-    "default_page": "home"
-}
