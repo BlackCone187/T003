@@ -214,5 +214,14 @@
         "parameter": "ssssssssssssssssssssssssssss.com",
         "execution_time": 0.06791925430297852,
         "result": "Failure"
+    },
+    {
+        "timestamp": "2026-08-25 20:53:39.349947",
+        "client_ip": "127.0.0.1",
+        "client_port": 54645,
+        "command": "ping",
+        "parameter": "google.com",
+        "execution_time": 3.1208019256591797,
+        "result": "Success"
     }
 ]

@@ -1,5 +1,6 @@
 import json
 
+
 def log_request(data, log_file):
 
     with open(log_file, "r") as f:
