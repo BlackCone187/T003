@@ -9,3 +9,4 @@ def log_request(data):
     with open(log_file, "a") as f:
         json.dump(data, f)
         f.write("\n")
+
