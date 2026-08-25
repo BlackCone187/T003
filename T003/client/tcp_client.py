@@ -1,6 +1,7 @@
 from socket import *
 
-from config.config_loader import load_config
+from T003.config.config_loader import load_config
+
 
 config = load_config()
 

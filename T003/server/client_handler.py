@@ -1,16 +1,18 @@
 import time
 from datetime import datetime
 
-from command_execute import ping
-from command_execute import tracert
-from command_execute import nslookup
-from command_execute import ipconfig
-from command_execute import route
-from command_execute import arp
-from command_execute import netstat
+from T003.server.command_execute import ping
+from T003.server.command_execute import tracert
+from T003.server.command_execute import nslookup
+from T003.server.command_execute import ipconfig
+from T003.server.command_execute import route
+from T003.server.command_execute import arp
+from T003.server.command_execute import netstat
 
-from logger import log_request
+from T003.server.logger import log_request
+from T003.config.config_loader import load_config
 
+config = load_config()
 
 def handle_client(connection_socket, client_address):
     message = connection_socket.recv(1024).decode()
@@ -85,7 +87,7 @@ def handle_client(connection_socket, client_address):
         "parameter": parameter,
         "execution_time": execution_time,
         "result": status
-    })
+    }, config["log_file"])
 
     response = (f"Command: {command} | Status: {status} | Execution Time: {execution_time:.4f} "
                 f"seconds | Timestamp: {timestamp} | Output: {result.stdout}")
