@@ -13,27 +13,11 @@ start_time = time.time()
 
 def read_logs():
 
-    logs = []
-
     if not Path(LOG_FILE).exists():
-        return logs
+        return []
 
-    file = open(LOG_FILE, "r")
-
-    for line in file:
-
-        line = line.strip()
-
-        if line:
-
-            try:
-                logs.append(json.loads(line))
-            except:
-                pass
-
-    file.close()
-
-    return logs
+    with open(LOG_FILE, "r") as f:
+        return json.load(f)
 
 
 def create_page(title, content):

@@ -2,15 +2,14 @@ from socket import *
 from pathlib import Path
 
 from T003.config.config_loader import load_config
-from T003.web.web import (
-    read_logs,
-    home_page,
-    dashboard_page,
-    history_page,
-    stats_page,
-    search_page,
-    error_page
-)
+
+from T003.web.web import read_logs
+from T003.web.web import home_page
+from T003.web.web import dashboard_page
+from T003.web.web import history_page
+from T003.web.web import stats_page
+from T003.web.web import search_page
+from T003.web.web import error_page
 
 config = load_config()
 

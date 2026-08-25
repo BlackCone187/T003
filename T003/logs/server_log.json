@@ -223,5 +223,77 @@
         "parameter": "google.com",
         "execution_time": 3.1208019256591797,
         "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 21:00:12.346307",
+        "client_ip": "127.0.0.1",
+        "client_port": 57359,
+        "command": "ping",
+        "parameter": "google.com",
+        "execution_time": 3.1112895011901855,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 21:01:17.461730",
+        "client_ip": "127.0.0.1",
+        "client_port": 57361,
+        "command": "tracert",
+        "parameter": "facebook.com",
+        "execution_time": 57.93829274177551,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 21:02:38.532708",
+        "client_ip": "127.0.0.1",
+        "client_port": 49751,
+        "command": "nslookup",
+        "parameter": "birzeit.edu",
+        "execution_time": 0.0363922119140625,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 21:02:45.999061",
+        "client_ip": "127.0.0.1",
+        "client_port": 63460,
+        "command": "ipconfig",
+        "parameter": "",
+        "execution_time": 0.028668642044067383,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 21:02:49.610719",
+        "client_ip": "127.0.0.1",
+        "client_port": 53554,
+        "command": "route",
+        "parameter": "",
+        "execution_time": 0.020235061645507812,
+        "result": "Failure"
+    },
+    {
+        "timestamp": "2026-08-25 21:03:04.593806",
+        "client_ip": "127.0.0.1",
+        "client_port": 53557,
+        "command": "arp",
+        "parameter": "",
+        "execution_time": 0.028894901275634766,
+        "result": "Failure"
+    },
+    {
+        "timestamp": "2026-08-25 21:03:09.260295",
+        "client_ip": "127.0.0.1",
+        "client_port": 57588,
+        "command": "netstat",
+        "parameter": "",
+        "execution_time": 84.31868648529053,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 21:14:12.982023",
+        "client_ip": "127.0.0.1",
+        "client_port": 54745,
+        "command": "ping",
+        "parameter": "google.com",
+        "execution_time": 3.11385440826416,
+        "result": "Success"
     }
 ]
