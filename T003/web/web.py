@@ -67,30 +67,30 @@ def create_page(title, content):
 
 def home_page():
 
-    content = ""
+    content = f"""
+    <h2>Home Page</h2>
 
-    content += "<h2>Home Page</h2>"
+    <p><b>Team Number:</b> T003</p>
 
-    content += "<p><b>Team Number:</b> T003</p>"
+    <p><b>Student Names:</b></p>
+    <ul>
+        <li>Jaber Jaber</li>
+        <li>Noor Aldeen Alatrash</li>
+        <li>Mohammad Hasiba</li>
+    </ul>
 
-    content += "<p><b>Student Names:</b></p>"
-    content += "<ul>"
-    content += "<li>Jaber Jaber</li>"
-    content += "<li>Noor Aldeen Alatrash</li>"
-    content += "<li>Mohammad Hasiba</li>"
-    content += "</ul>"
+    <p><b>Student IDs:</b></p>
+    <ul>
+        <li>1240929</li>
+        <li>1242462</li>
+        <li>1242780</li>
+    </ul>
 
-    content += "<p><b>Student IDs:</b></p>"
-    content += "<ul>"
-    content += "<li>1240929</li>"
-    content += "<li>1242462</li>"
-    content += "<li>1242780</li>"
-    content += "</ul>"
+    <p><b>Section:</b> 2</p>
 
-    content += "<p><b>Section:</b> 2</p>"
-
-    content += "<h3>About the Course</h3>"
-    content += "<p>ENCS3320 - Computer Networks</p>"
+    <h3>About the Course</h3>
+    <p>ENCS3320 - Computer Networks</p>
+    """
 
     return create_page("Home", content)
 
@@ -109,11 +109,13 @@ def dashboard_page(logs):
     if len(logs) > 0:
         last_time = logs[-1].get("timestamp", "-")
 
-    content = "<h2>Dashboard</h2>"
-    content += "<p><b>Number of executed commands:</b> " + str(len(logs)) + "</p>"
-    content += "<p><b>Number of connected clients:</b> " + str(len(clients)) + "</p>"
-    content += "<p><b>Last execution time:</b> " + str(last_time) + "</p>"
-    content += "<p><b>Server uptime:</b> " + str(int(time.time() - start_time)) + " seconds</p>"
+    content = f"""
+    <h2>Dashboard</h2>
+    <p><b>Number of executed commands:</b> {len(logs)}</p>
+    <p><b>Number of connected clients:</b> {len(clients)}</p>
+    <p><b>Last execution time:</b> {last_time}</p>
+    <p><b>Server uptime:</b> {int(time.time() - start_time)} seconds</p>
+    """
 
     return create_page("Dashboard", content)
 
@@ -186,133 +188,64 @@ def stats_page(logs):
     if len(logs) > 0:
         average = total_time / len(logs)
 
-    content = "<h2>Statistics</h2>"
-    content += "<p><b>Most frequently used command:</b> " + most_used + "</p>"
-    content += "<p><b>Average execution time:</b> " + str(round(average, 4)) + " seconds</p>"
-    content += "<p><b>Total successful requests:</b> " + str(successful) + "</p>"
-    content += "<p><b>Total failed requests:</b> " + str(failed) + "</p>"
+    content = f"""
+    <h2>Statistics</h2>
+    <p><b>Most frequently used command:</b> {most_used}</p>
+    <p><b>Average execution time:</b> {round(average, 4)} seconds</p>
+    <p><b>Total successful requests:</b> {successful}</p>
+    <p><b>Total failed requests:</b> {failed}</p>
+    """
 
     return create_page("Statistics", content)
 
 
 def search_page(logs, command, hostname, client_ip):
 
-    content = "<h2>Search</h2>"
+    content = f"""
+    <h2>Search</h2>
 
-    content += '<form method="GET" action="/search" id="search-form">'
+    <form method="GET" action="/search">
 
-    content += "<p>Command:</p>"
+        <p>Command:</p>
+        <select name="command">
+            <option value="">All</option>
+            <option value="ping">ping</option>
+            <option value="tracert">tracert</option>
+            <option value="nslookup">nslookup</option>
+            <option value="ipconfig">ipconfig</option>
+            <option value="route">route</option>
+            <option value="arp">arp</option>
+            <option value="netstat">netstat</option>
+        </select>
 
-    content += '<select name="command" id="command">'
+        <p>Hostname:</p>
+        <input type="text" name="hostname" value="{hostname}">
 
-    commands = ["ping", "tracert", "nslookup", "ipconfig", "route", "arp", "netstat"]
+        <p>Client IP:</p>
+        <input type="text" name="client_ip" value="{client_ip}">
 
-    if command == "":
-        content += '<option value="" selected>All</option>'
-    else:
-        content += '<option value="">All</option>'
+        <br><br>
 
-    for item in commands:
+        <input type="submit" value="Search">
 
-        if command == item:
-            content += '<option value="' + item + '" selected>' + item + '</option>'
-        else:
-            content += '<option value="' + item + '">' + item + '</option>'
-
-    content += "</select>"
-
-    content += "<p>Hostname:</p>"
-    content += '<input type="text" name="hostname" id="hostname" value="' + hostname + '">'
-
-    content += "<p>Client IP:</p>"
-    content += '<input type="text" name="client_ip" id="client_ip" value="' + client_ip + '">'
-
-    content += "<br><br>"
-
-    content += '<input type="submit" value="Search"> '
-    content += '<input type="button" value="Clear" onclick="clearSearch()">'
-
-    content += "</form>"
-
-    content += '<div id="saved-results"></div>'
-
-    content += """
-    <script>
-
-    window.onload = function() {
-
-        if (localStorage.getItem("search_command") !== null) {
-            document.getElementById("command").value =
-                localStorage.getItem("search_command");
-        }
-
-        if (localStorage.getItem("search_hostname") !== null) {
-            document.getElementById("hostname").value =
-                localStorage.getItem("search_hostname");
-        }
-
-        if (localStorage.getItem("search_client_ip") !== null) {
-            document.getElementById("client_ip").value =
-                localStorage.getItem("search_client_ip");
-        }
-
-        if (localStorage.getItem("search_results") !== null) {
-            document.getElementById("saved-results").innerHTML =
-                localStorage.getItem("search_results");
-        }
-    };
-
-
-    document.getElementById("search-form").addEventListener("submit", function() {
-
-        localStorage.setItem(
-            "search_command",
-            document.getElementById("command").value
-        );
-
-        localStorage.setItem(
-            "search_hostname",
-            document.getElementById("hostname").value
-        );
-
-        localStorage.setItem(
-            "search_client_ip",
-            document.getElementById("client_ip").value
-        );
-    });
-
-
-    function clearSearch() {
-
-        document.getElementById("command").value = "";
-        document.getElementById("hostname").value = "";
-        document.getElementById("client_ip").value = "";
-
-        localStorage.removeItem("search_command");
-        localStorage.removeItem("search_hostname");
-        localStorage.removeItem("search_client_ip");
-        localStorage.removeItem("search_results");
-
-        document.getElementById("saved-results").innerHTML = "";
-    }
-
-    </script>
+    </form>
     """
 
     if command != "" or hostname != "" or client_ip != "":
 
-        content += "<h3>Search Results</h3>"
+        content += """
+        <h3>Search Results</h3>
 
-        content += "<table border='1' cellpadding='5'>"
-
-        content += "<tr>"
-        content += "<th>Time</th>"
-        content += "<th>Client IP</th>"
-        content += "<th>Command</th>"
-        content += "<th>Parameter</th>"
-        content += "<th>Execution Time</th>"
-        content += "<th>Status</th>"
-        content += "</tr>"
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>Time</th>
+                <th>Client IP</th>
+                <th>Command</th>
+                <th>Parameter</th>
+                <th>Execution Time</th>
+                <th>Status</th>
+            </tr>
+        """
 
         for log in logs:
 
@@ -320,23 +253,25 @@ def search_page(logs, command, hostname, client_ip):
             log_parameter = str(log.get("parameter", ""))
             log_ip = str(log.get("client_ip", ""))
 
-            if command != "" and command.lower() not in log_command.lower():
+            if command and command.lower() not in log_command.lower():
                 continue
 
-            if hostname != "" and hostname.lower() not in log_parameter.lower():
+            if hostname and hostname.lower() not in log_parameter.lower():
                 continue
 
-            if client_ip != "" and client_ip.lower() not in log_ip.lower():
+            if client_ip and client_ip.lower() not in log_ip.lower():
                 continue
 
-            content += "<tr>"
-            content += "<td>" + str(log.get("timestamp", "")) + "</td>"
-            content += "<td>" + log_ip + "</td>"
-            content += "<td>" + log_command + "</td>"
-            content += "<td>" + log_parameter + "</td>"
-            content += "<td>" + str(log.get("execution_time", "")) + "</td>"
-            content += "<td>" + str(log.get("result", "")) + "</td>"
-            content += "</tr>"
+            content += f"""
+            <tr>
+                <td>{log.get("timestamp", "")}</td>
+                <td>{log_ip}</td>
+                <td>{log_command}</td>
+                <td>{log_parameter}</td>
+                <td>{log.get("execution_time", "")}</td>
+                <td>{log.get("result", "")}</td>
+            </tr>
+            """
 
         content += "</table>"
 

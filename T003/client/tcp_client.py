@@ -1,5 +1,5 @@
 from socket import *
-from menu import show_menu
+from T003.client.menu import show_menu
 
 from T003.config.config_loader import load_config
 
