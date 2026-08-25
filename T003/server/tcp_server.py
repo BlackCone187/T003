@@ -15,8 +15,8 @@ def start_tcp_server():
 
     server_socket.bind(('', SERVER_PORT))
 
-    #server_socket.listen(config["max_clients"])
-    server_socket.listen(2)
+    server_socket.listen(config["max_clients"])
+
     print("TCP Server is listening...")
 
     while True:
