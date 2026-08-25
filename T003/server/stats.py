@@ -1,7 +1,10 @@
 import json
 
-LOG_FILE = "logs/server_log.json"
+from config.config_loader import load_config
 
+config = load_config()
+
+LOG_FILE = config["log_file"]
 
 def read_logs():
     logs = []

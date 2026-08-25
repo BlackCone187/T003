@@ -1,14 +1,18 @@
 from socket import *
 
 from config.config_loader import load_config
+
 config = load_config()
 
 SERVER_NAME = "localhost"
 SERVER_PORT = config["tcp_port"]
 
-while True:
 
-    choice = input("""
+def start_client():
+
+    while True:
+
+        choice = input("""
 ========================
 Network Diagnostic System
 ========================
@@ -22,49 +26,50 @@ Network Diagnostic System
 8. Exit
 Select: """)
 
-    if choice == "1":
-        command = "ping"
+        if choice == "1":
+            command = "ping"
 
-    elif choice == "2":
-        command = "tracert"
+        elif choice == "2":
+            command = "tracert"
 
-    elif choice == "3":
-        command = "nslookup"
+        elif choice == "3":
+            command = "nslookup"
 
-    elif choice == "4":
-        command = "ipconfig"
+        elif choice == "4":
+            command = "ipconfig"
 
-    elif choice == "5":
-        command = "route"
+        elif choice == "5":
+            command = "route"
 
-    elif choice == "6":
-        command = "arp"
+        elif choice == "6":
+            command = "arp"
 
-    elif choice == "7":
-        command = "netstat"
+        elif choice == "7":
+            command = "netstat"
 
-    elif choice == "8":
-        command = "exit"
+        elif choice == "8":
+            command = "exit"
 
-    else:
-        print("Invalid choice")
-        continue
+        else:
+            print("Invalid choice")
+            continue
 
-    if command in ["ping", "tracert", "nslookup"]:
-        host = input("Enter host: ")
-        command = command + " " + host
+        if command in ["ping", "tracert", "nslookup"]:
+            host = input("Enter host: ")
+            command = command + " " + host
 
-    client_socket = socket(AF_INET, SOCK_STREAM)
-    client_socket.connect((SERVER_NAME, SERVER_PORT))
+        client_socket = socket(AF_INET, SOCK_STREAM)
 
-    client_socket.send(command.encode())
+        client_socket.connect((SERVER_NAME, SERVER_PORT))
 
-    response = client_socket.recv(4096).decode()
+        client_socket.send(command.encode())
 
-    print("Server response:")
-    print(response)
+        response = client_socket.recv(4096).decode()
 
-    client_socket.close()
+        print("Server response:")
+        print(response)
 
-    if choice == "8":
-        break
+        client_socket.close()
+
+        if choice == "8":
+            break

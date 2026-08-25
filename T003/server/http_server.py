@@ -5,14 +5,6 @@ config = load_config()
 
 SERVER_PORT = config["http_port"]
 
-server_socket = socket(AF_INET, SOCK_STREAM)
-
-server_socket.bind(('', SERVER_PORT))
-
-server_socket.listen(5)
-
-print("HTTP Server is listening...")
-
 
 def create_response(status, content):
     response = (
@@ -178,47 +170,58 @@ def error_page(status):
     """
 
 
-while True:
-    connection_socket, client_address = server_socket.accept()
+def start_http_server():
 
-    request = connection_socket.recv(4096).decode()
+    server_socket = socket(AF_INET, SOCK_STREAM)
 
-    if not request:
-        connection_socket.close()
-        continue
+    server_socket.bind(('', SERVER_PORT))
 
-    parts = request.split()
+    server_socket.listen(5)
 
-    if len(parts) < 2:
-        response = create_response("400 Bad Request", error_page("400 Bad Request"))
+    print("HTTP Server is listening...")
 
-    else:
-        method = parts[0]
-        path = parts[1]
+    while True:
 
-        if method != "GET":
+        connection_socket, client_address = server_socket.accept()
+
+        request = connection_socket.recv(4096).decode()
+
+        if not request:
+            connection_socket.close()
+            continue
+
+        parts = request.split()
+
+        if len(parts) < 2:
             response = create_response("400 Bad Request", error_page("400 Bad Request"))
 
-        elif path == "/":
-            response = create_response("200 OK", home_page())
-
-        elif path == "/dashboard":
-            response = create_response("200 OK", dashboard_page())
-
-        elif path == "/history":
-            response = create_response("200 OK", history_page())
-
-        elif path == "/stats":
-            response = create_response("200 OK", stats_page())
-
-        elif path == "/search":
-            response = create_response("200 OK", search_page())
-
-        elif path == "/download":
-            response = create_response("403 Forbidden", error_page("403 Forbidden"))
-
         else:
-            response = create_response("404 Not Found", error_page("404 Not Found"))
+            method = parts[0]
+            path = parts[1]
 
-    connection_socket.send(response.encode())
-    connection_socket.close()
+            if method != "GET":
+                response = create_response("400 Bad Request", error_page("400 Bad Request"))
+
+            elif path == "/":
+                response = create_response("200 OK", home_page())
+
+            elif path == "/dashboard":
+                response = create_response("200 OK", dashboard_page())
+
+            elif path == "/history":
+                response = create_response("200 OK", history_page())
+
+            elif path == "/stats":
+                response = create_response("200 OK", stats_page())
+
+            elif path == "/search":
+                response = create_response("200 OK", search_page())
+
+            elif path == "/download":
+                response = create_response("403 Forbidden", error_page("403 Forbidden"))
+
+            else:
+                response = create_response("404 Not Found", error_page("404 Not Found"))
+
+        connection_socket.send(response.encode())
+        connection_socket.close()
