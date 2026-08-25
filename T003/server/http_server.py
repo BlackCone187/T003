@@ -1,6 +1,9 @@
 from socket import *
+from config.config_loader import load_config
 
-SERVER_PORT = 6462
+config = load_config()
+
+SERVER_PORT = config["http_port"]
 
 server_socket = socket(AF_INET, SOCK_STREAM)
 
