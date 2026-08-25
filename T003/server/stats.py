@@ -6,14 +6,10 @@ config = load_config()
 
 LOG_FILE = config["log_file"]
 
-def read_logs():
-    logs = []
+def read_logs(log_file):
 
-    with open(LOG_FILE, "r") as f:
-        for line in f:
-            logs.append(json.loads(line))
-
-    return logs
+    with open(log_file, "r") as f:
+        return json.load(f)
 
 
 def successful_requests(logs):
@@ -69,7 +65,7 @@ def most_used_command(logs):
 
     return most_used
 
-logs = read_logs()
+logs = read_logs(config["log_file"])
 
 print("Most used command:", most_used_command(logs))
 print("Average execution time:", average_execution_time(logs))
