@@ -51,15 +51,20 @@ def most_used_command(logs):
     for log in logs:
         command = log["command"]
 
-        if command in commands:
-            commands[command] += 1
-        else:
+        if command not in commands:
             commands[command] = 1
+        else:
+            commands[command] = commands[command] + 1
 
-    if len(commands) == 0:
-        return "-"
+    most_used = "-"
+    highest = 0
 
-    return max(commands, key=commands.get)
+    for command in commands:
+        if commands[command] > highest:
+            highest = commands[command]
+            most_used = command
+
+    return most_used
 
 logs = read_logs()
 
