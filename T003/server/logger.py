@@ -7,4 +7,3 @@ def log_request(data, log_file):
     with open(log_file, "a") as f:
         json.dump(data, f)
         f.write("\n")
-

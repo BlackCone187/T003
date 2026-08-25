@@ -3,6 +3,7 @@ import threading
 import subprocess
 import time
 from datetime import datetime
+<<<<<<< HEAD
 from server.logger import log_request
 from config.config_loader import load_config
 
@@ -10,6 +11,18 @@ config = load_config()
 
 SERVER_PORT = config["tcp_port"]
 
+=======
+from logger import log_request
+
+SERVER_PORT = 5462
+
+server_socket = socket(AF_INET, SOCK_STREAM)#make tcp socket that use IPv4
+
+server_socket.bind(('', SERVER_PORT))# link a socket with port number
+
+server_socket.listen(5)
+
+>>>>>>> f48ce9344dff983823ae75ad09072c5aede71bda
 
 def handle_client(connection_socket, client_address):
 
@@ -82,6 +95,7 @@ def handle_client(connection_socket, client_address):
     execution_time = end_time - start_time
 
     log_request({
+<<<<<<< HEAD
         "timestamp": str(timestamp),
         "client_ip": client_address[0],
         "client_port": client_address[1],
@@ -96,6 +110,16 @@ def handle_client(connection_socket, client_address):
         f"Execution Time: {execution_time:.4f} seconds | "
         f"Timestamp: {timestamp} | Output: {result.stdout}"
     )
+=======
+    "timestamp": str(timestamp),
+    "client_ip": client_address[0],
+    "client_port": client_address[1],
+    "command": command,
+    "parameter": parameter,
+    "execution_time": execution_time,
+    "result": status
+})
+>>>>>>> f48ce9344dff983823ae75ad09072c5aede71bda
 
     connection_socket.send(response.encode())
 
