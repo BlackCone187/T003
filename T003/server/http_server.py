@@ -1,185 +1,44 @@
 from socket import *
+from pathlib import Path
 
 from T003.config.config_loader import load_config
+from T003.web.web import (
+    read_logs,
+    home_page,
+    dashboard_page,
+    history_page,
+    stats_page,
+    search_page,
+    error_page
+)
 
 config = load_config()
 
 SERVER_PORT = config["http_port"]
+LOG_FILE = config["log_file"]
 
 
 def create_response(status, content):
-    response = (
-        f"HTTP/1.1 {status}\r\n"
-        "Content-Type: text/html\r\n"
-        "\r\n"
-        f"{content}"
-    )
+
+    response = "HTTP/1.1 " + status + "\r\n"
+    response += "Content-Type: text/html\r\n"
+    response += "Content-Length: " + str(len(content.encode())) + "\r\n"
+    response += "Connection: close\r\n"
+    response += "\r\n"
+    response += content
+
     return response
-
-
-def home_page():
-    return """
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Network Diagnostic System</title>
-    </head>
-    <body>
-        <h1>Network Diagnostic System</h1>
-
-        <h2>Team Information</h2>
-        <p>Team Number: T003</p>
-        <p>Course: ENCS3320</p>
-        <p>Project: Socket Programming</p>
-
-        <h2>Pages</h2>
-
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/dashboard">Dashboard</a></li>
-            <li><a href="/history">Command History</a></li>
-            <li><a href="/stats">Statistics</a></li>
-            <li><a href="/search">Search</a></li>
-            <li><a href="/download">Download</a></li>
-        </ul>
-    </body>
-    </html>
-    """
-
-
-def dashboard_page():
-    return """
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Dashboard</title>
-    </head>
-    <body>
-        <h1>Dashboard</h1>
-        <p>Number of executed commands: 0</p>
-        <p>Number of connected clients: 0</p>
-        <p>Last execution time: -</p>
-        <p>Server uptime: 0 seconds</p>
-    </body>
-    </html>
-    """
-
-
-def history_page():
-    return """
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Command History</title>
-    </head>
-    <body>
-        <h1>Command History</h1>
-
-        <table border="1">
-            <tr>
-                <th>Time</th>
-                <th>Client IP</th>
-                <th>Command</th>
-                <th>Parameter</th>
-                <th>Execution Time</th>
-                <th>Status</th>
-            </tr>
-        </table>
-    </body>
-    </html>
-    """
-
-
-def stats_page():
-    return """
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Statistics</title>
-    </head>
-    <body>
-        <h1>Statistics</h1>
-        <p>Most frequently used command: -</p>
-        <p>Average execution time: -</p>
-        <p>Total successful requests: 0</p>
-        <p>Total failed requests: 0</p>
-    </body>
-    </html>
-    """
-
-
-def search_page():
-    return """
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Search</title>
-    </head>
-    <body>
-        <h1>Search</h1>
-
-        <form>
-            <label>Command:</label>
-            <input type="text">
-
-            <br><br>
-
-            <label>Hostname:</label>
-            <input type="text">
-
-            <br><br>
-
-            <label>Client IP:</label>
-            <input type="text">
-
-            <br><br>
-
-            <input type="submit" value="Search">
-        </form>
-    </body>
-    </html>
-    """
-
-
-def download_page():
-    return """
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Download</title>
-    </head>
-    <body>
-        <h1>Download</h1>
-        <p>Download log file</p>
-    </body>
-    </html>
-    """
-
-
-def error_page(status):
-    return f"""
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>{status}</title>
-    </head>
-    <body>
-        <h1>{status}</h1>
-        <p>The requested resource cannot be accessed.</p>
-    </body>
-    </html>
-    """
 
 
 def start_http_server():
 
     server_socket = socket(AF_INET, SOCK_STREAM)
 
-    server_socket.bind(('', SERVER_PORT))
-
+    server_socket.bind(("", SERVER_PORT))
     server_socket.listen(5)
 
     print("HTTP Server is listening...")
+    print("Open http://localhost:" + str(SERVER_PORT))
 
     while True:
 
@@ -194,35 +53,123 @@ def start_http_server():
         parts = request.split()
 
         if len(parts) < 2:
-            response = create_response("400 Bad Request", error_page("400 Bad Request"))
+            response = create_response(
+                "400 Bad Request",
+                error_page("400 Bad Request")
+            )
 
         else:
+
             method = parts[0]
             path = parts[1]
 
+            query = {}
+
+            if "?" in path:
+
+                path_parts = path.split("?", 1)
+
+                path = path_parts[0]
+                query_string = path_parts[1]
+
+                for item in query_string.split("&"):
+
+                    if "=" in item:
+
+                        key, value = item.split("=", 1)
+                        query[key] = value
+
             if method != "GET":
-                response = create_response("400 Bad Request", error_page("400 Bad Request"))
+
+                response = create_response(
+                    "400 Bad Request",
+                    error_page("400 Bad Request")
+                )
 
             elif path == "/":
-                response = create_response("200 OK", home_page())
+
+                response = create_response(
+                    "200 OK",
+                    home_page()
+                )
 
             elif path == "/dashboard":
-                response = create_response("200 OK", dashboard_page())
+
+                response = create_response(
+                    "200 OK",
+                    dashboard_page(read_logs())
+                )
 
             elif path == "/history":
-                response = create_response("200 OK", history_page())
+
+                response = create_response(
+                    "200 OK",
+                    history_page(read_logs())
+                )
 
             elif path == "/stats":
-                response = create_response("200 OK", stats_page())
+
+                response = create_response(
+                    "200 OK",
+                    stats_page(read_logs())
+                )
 
             elif path == "/search":
-                response = create_response("200 OK", search_page())
+
+                response = create_response(
+                    "200 OK",
+                    search_page(
+                        read_logs(),
+                        query.get("command", ""),
+                        query.get("hostname", ""),
+                        query.get("client_ip", "")
+                    )
+                )
 
             elif path == "/download":
-                response = create_response("403 Forbidden", error_page("403 Forbidden"))
+
+                if not Path(LOG_FILE).exists():
+
+                    response = create_response(
+                        "404 Not Found",
+                        error_page("404 Not Found")
+                    )
+
+                else:
+
+                    file = open(LOG_FILE, "rb")
+                    data = file.read()
+                    file.close()
+
+                    response = "HTTP/1.1 200 OK\r\n"
+                    response += "Content-Type: application/json\r\n"
+                    response += "Content-Disposition: attachment; filename=server_log.json\r\n"
+                    response += "Content-Length: " + str(len(data)) + "\r\n"
+                    response += "Connection: close\r\n"
+                    response += "\r\n"
+
+                    connection_socket.send(response.encode() + data)
+                    connection_socket.close()
+
+                    continue
+
+            elif path == "/forbidden":
+
+                response = create_response(
+                    "403 Forbidden",
+                    error_page("403 Forbidden")
+                )
 
             else:
-                response = create_response("404 Not Found", error_page("404 Not Found"))
+
+                response = create_response(
+                    "404 Not Found",
+                    error_page("404 Not Found")
+                )
 
         connection_socket.send(response.encode())
         connection_socket.close()
+
+
+if __name__ == "__main__":
+    start_http_server()

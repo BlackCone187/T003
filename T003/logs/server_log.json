@@ -22,3 +22,4 @@
 {"timestamp": "2026-08-25 17:08:30.783191", "client_ip": "127.0.0.1", "client_port": 49401, "command": "nslookup", "parameter": "google.com", "execution_time": 0.10724735260009766, "result": "Success"}
 {"timestamp": "2026-08-25 17:09:53.750937", "client_ip": "127.0.0.1", "client_port": 49670, "command": "nslookup", "parameter": "ali.com", "execution_time": 0.20079827308654785, "result": "Success"}
 {"timestamp": "2026-08-25 17:10:08.272870", "client_ip": "127.0.0.1", "client_port": 49671, "command": "tracert", "parameter": "ssssssssssssssssssssssssssss.com", "execution_time": 0.06791925430297852, "result": "Failure"}
+{"timestamp": "2026-08-25 19:24:27.334655", "client_ip": "127.0.0.1", "client_port": 49671, "command": "arp", "parameter": "", "execution_time": 0.01505899429321289, "result": "Failure"}

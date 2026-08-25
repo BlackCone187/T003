@@ -1,0 +1,10 @@
+ALLOWED_COMMANDS = [
+    "ping",
+    "tracert",
+    "nslookup",
+    "ipconfig",
+    "route",
+    "arp",
+    "netstat",
+    "exit"
+]

@@ -50,26 +50,38 @@ def handle_client(connection_socket, client_address):
 
     timestamp = datetime.now()
 
-    if command == "ping":
-        result = ping(parts[1])
+    try:
+        if command == "ping":
+            result = ping(parts[1])
 
-    elif command == "tracert":
-        result = tracert(parts[1])
+        elif command == "tracert":
+            result = tracert(parts[1])
 
-    elif command == "nslookup":
-        result = nslookup(parts[1])
+        elif command == "nslookup":
+            result = nslookup(parts[1])
 
-    elif command == "ipconfig":
-        result = ipconfig()
+        elif command == "ipconfig":
+            result = ipconfig()
 
-    elif command == "route":
-        result = route()
+        elif command == "route":
+            result = route()
 
-    elif command == "arp":
-        result = arp()
+        elif command == "arp":
+            result = arp()
 
-    elif command == "netstat":
-        result = netstat()
+        elif command == "netstat":
+            result = netstat()
+
+    except Exception as e:
+        status = "Failure"
+        print("Command execution failed:", e)
+
+        connection_socket.send(
+            f"Command: {command} | Status: Failure | Output: {str(e)}".encode()
+        )
+
+        connection_socket.close()
+        return
 
     if result.returncode == 0:
         status = "Success"
