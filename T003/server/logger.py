@@ -1,9 +1,11 @@
 import json
-import os
 
 def log_request(data, log_file):
-    os.makedirs("logs", exist_ok=True)
 
-    with open(log_file, "a") as f:
-        json.dump(data, f)
-        f.write("\n")
+    with open(log_file, "r") as f:
+        logs = json.load(f)
+
+    logs.append(data)
+
+    with open(log_file, "w") as f:
+        json.dump(logs, f, indent=4)

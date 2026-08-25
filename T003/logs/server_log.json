@@ -1,216 +1,218 @@
-{
-    "timestamp": "2026-08-25 16:08:16.714940",
-    "client_ip": "127.0.0.1",
-    "client_port": 59068,
-    "command": "ipconfig",
-    "parameter": "",
-    "execution_time": 0.022614240646362305,
-    "result": "Success"
-}
-{
-    "timestamp": "2026-08-25 16:08:21.613432",
-    "client_ip": "127.0.0.1",
-    "client_port": 59069,
-    "command": "ping",
-    "parameter": "google.com",
-    "execution_time": 3.066504955291748,
-    "result": "Success"
-}
-{
-    "timestamp": "2026-08-25 16:11:25.219276",
-    "client_ip": "127.0.0.1",
-    "client_port": 61221,
-    "command": "netstat",
-    "parameter": "",
-    "execution_time": 60.16401219367981,
-    "result": "Success"
-}
-{
-    "timestamp": "2026-08-25 16:12:50.543217",
-    "client_ip": "127.0.0.1",
-    "client_port": 60284,
-    "command": "tracert",
-    "parameter": "facebook.com",
-    "execution_time": 39.36691904067993,
-    "result": "Success"
-}
-{
-    "timestamp": "2026-08-25 16:14:39.491649",
-    "client_ip": "127.0.0.1",
-    "client_port": 60291,
-    "command": "nslookup",
-    "parameter": "f",
-    "execution_time": 0.215986967086792,
-    "result": "Success"
-}
-{
-    "timestamp": "2026-08-25 16:15:39.543209",
-    "client_ip": "127.0.0.1",
-    "client_port": 49673,
-    "command": "ping",
-    "parameter": "ah.edu",
-    "execution_time": 0.07141566276550293,
-    "result": "Failure"
-}
-{
-    "timestamp": "2026-08-25 16:24:20.668908",
-    "client_ip": "127.0.0.1",
-    "client_port": 59268,
-    "command": "route",
-    "parameter": "",
-    "execution_time": 0.01522684097290039,
-    "result": "Failure"
-}
-{
-    "timestamp": "2026-08-25 16:24:23.136249",
-    "client_ip": "127.0.0.1",
-    "client_port": 59269,
-    "command": "arp",
-    "parameter": "",
-    "execution_time": 0.017911434173583984,
-    "result": "Failure"
-}
-{
-    "timestamp": "2026-08-25 16:24:24.397426",
-    "client_ip": "127.0.0.1",
-    "client_port": 59270,
-    "command": "netstat",
-    "parameter": "",
-    "execution_time": 42.1981418132782,
-    "result": "Success"
-}
-{
-    "timestamp": "2026-08-25 16:53:21.534802",
-    "client_ip": "127.0.0.1",
-    "client_port": 63507,
-    "command": "ping",
-    "parameter": "google.com",
-    "execution_time": 3.2953484058380127,
-    "result": "Success"
-}
-{
-    "timestamp": "2026-08-25 16:53:12.163590",
-    "client_ip": "127.0.0.1",
-    "client_port": 63506,
-    "command": "tracert",
-    "parameter": "google.com",
-    "execution_time": 42.4607138633728,
-    "result": "Success"
-}
-{
-    "timestamp": "2026-08-25 16:53:29.033772",
-    "client_ip": "127.0.0.1",
-    "client_port": 63508,
-    "command": "tracert",
-    "parameter": "google.com",
-    "execution_time": 44.40458416938782,
-    "result": "Success"
-}
-{
-    "timestamp": "2026-08-25 16:53:34.849639",
-    "client_ip": "127.0.0.1",
-    "client_port": 63509,
-    "command": "tracert",
-    "parameter": "google.com",
-    "execution_time": 41.96143579483032,
-    "result": "Success"
-}
-{
-    "timestamp": "2026-08-25 16:53:40.881589",
-    "client_ip": "127.0.0.1",
-    "client_port": 63511,
-    "command": "tracert",
-    "parameter": "google.com",
-    "execution_time": 43.33951735496521,
-    "result": "Success"
-}
-{
-    "timestamp": "2026-08-25 16:56:54.941600",
-    "client_ip": "127.0.0.1",
-    "client_port": 63525,
-    "command": "tracert",
-    "parameter": "google.com",
-    "execution_time": 34.34940457344055,
-    "result": "Success"
-}
-{
-    "timestamp": "2026-08-25 16:56:59.488561",
-    "client_ip": "127.0.0.1",
-    "client_port": 63527,
-    "command": "tracert",
-    "parameter": "google.com",
-    "execution_time": 33.71213412284851,
-    "result": "Success"
-}
-{
-    "timestamp": "2026-08-25 16:57:04.100197",
-    "client_ip": "127.0.0.1",
-    "client_port": 63528,
-    "command": "tracert",
-    "parameter": "google.com",
-    "execution_time": 34.16179394721985,
-    "result": "Success"
-}
-{
-    "timestamp": "2026-08-25 16:57:12.120953",
-    "client_ip": "127.0.0.1",
-    "client_port": 57745,
-    "command": "tracert",
-    "parameter": "google.com",
-    "execution_time": 33.94795322418213,
-    "result": "Success"
-}
-{
-    "timestamp": "2026-08-25 17:04:24.784949",
-    "client_ip": "127.0.0.1",
-    "client_port": 50138,
-    "command": "ping",
-    "parameter": "\u0633",
-    "execution_time": 1.2783660888671875,
-    "result": "Failure"
-}
-{
-    "timestamp": "2026-08-25 17:07:26.992955",
-    "client_ip": "127.0.0.1",
-    "client_port": 49396,
-    "command": "ping",
-    "parameter": "b.edu",
-    "execution_time": 0.13674712181091309,
-    "result": "Failure"
-}
-{
-    "timestamp": "2026-08-25 17:08:12.834864",
-    "client_ip": "127.0.0.1",
-    "client_port": 49400,
-    "command": "nslookup",
-    "parameter": "ritaj.edu",
-    "execution_time": 0.18975615501403809,
-    "result": "Success"
-}
-{
-    "timestamp": "2026-08-25 17:08:30.783191",
-    "client_ip": "127.0.0.1",
-    "client_port": 49401,
-    "command": "nslookup",
-    "parameter": "google.com",
-    "execution_time": 0.10724735260009766,
-    "result": "Success"
-}
-{
-    "timestamp": "2026-08-25 17:09:53.750937",
-    "client_ip": "127.0.0.1",
-    "client_port": 49670,
-    "command": "nslookup",
-    "parameter": "ali.com",
-    "execution_time": 0.20079827308654785,
-    "result": "Success"
-}
-{
-    "timestamp": "2026-08-25 17:10:08.272870",
-    "client_ip": "127.0.0.1",
-    "client_port": 49671,
-    "command": "tracert",
-    "parameter": "ssssssssssssssssssssssssssss.com",
-    "execution_time": 0.06791925430297852,
-    "result": "Failure"
-}
+[
+    {
+        "timestamp": "2026-08-25 16:08:16.714940",
+        "client_ip": "127.0.0.1",
+        "client_port": 59068,
+        "command": "ipconfig",
+        "parameter": "",
+        "execution_time": 0.022614240646362305,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 16:08:21.613432",
+        "client_ip": "127.0.0.1",
+        "client_port": 59069,
+        "command": "ping",
+        "parameter": "google.com",
+        "execution_time": 3.066504955291748,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 16:11:25.219276",
+        "client_ip": "127.0.0.1",
+        "client_port": 61221,
+        "command": "netstat",
+        "parameter": "",
+        "execution_time": 60.16401219367981,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 16:12:50.543217",
+        "client_ip": "127.0.0.1",
+        "client_port": 60284,
+        "command": "tracert",
+        "parameter": "facebook.com",
+        "execution_time": 39.36691904067993,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 16:14:39.491649",
+        "client_ip": "127.0.0.1",
+        "client_port": 60291,
+        "command": "nslookup",
+        "parameter": "f",
+        "execution_time": 0.215986967086792,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 16:15:39.543209",
+        "client_ip": "127.0.0.1",
+        "client_port": 49673,
+        "command": "ping",
+        "parameter": "ah.edu",
+        "execution_time": 0.07141566276550293,
+        "result": "Failure"
+    },
+    {
+        "timestamp": "2026-08-25 16:24:20.668908",
+        "client_ip": "127.0.0.1",
+        "client_port": 59268,
+        "command": "route",
+        "parameter": "",
+        "execution_time": 0.01522684097290039,
+        "result": "Failure"
+    },
+    {
+        "timestamp": "2026-08-25 16:24:23.136249",
+        "client_ip": "127.0.0.1",
+        "client_port": 59269,
+        "command": "arp",
+        "parameter": "",
+        "execution_time": 0.017911434173583984,
+        "result": "Failure"
+    },
+    {
+        "timestamp": "2026-08-25 16:24:24.397426",
+        "client_ip": "127.0.0.1",
+        "client_port": 59270,
+        "command": "netstat",
+        "parameter": "",
+        "execution_time": 42.1981418132782,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 16:53:21.534802",
+        "client_ip": "127.0.0.1",
+        "client_port": 63507,
+        "command": "ping",
+        "parameter": "google.com",
+        "execution_time": 3.2953484058380127,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 16:53:12.163590",
+        "client_ip": "127.0.0.1",
+        "client_port": 63506,
+        "command": "tracert",
+        "parameter": "google.com",
+        "execution_time": 42.4607138633728,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 16:53:29.033772",
+        "client_ip": "127.0.0.1",
+        "client_port": 63508,
+        "command": "tracert",
+        "parameter": "google.com",
+        "execution_time": 44.40458416938782,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 16:53:34.849639",
+        "client_ip": "127.0.0.1",
+        "client_port": 63509,
+        "command": "tracert",
+        "parameter": "google.com",
+        "execution_time": 41.96143579483032,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 16:53:40.881589",
+        "client_ip": "127.0.0.1",
+        "client_port": 63511,
+        "command": "tracert",
+        "parameter": "google.com",
+        "execution_time": 43.33951735496521,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 16:56:54.941600",
+        "client_ip": "127.0.0.1",
+        "client_port": 63525,
+        "command": "tracert",
+        "parameter": "google.com",
+        "execution_time": 34.34940457344055,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 16:56:59.488561",
+        "client_ip": "127.0.0.1",
+        "client_port": 63527,
+        "command": "tracert",
+        "parameter": "google.com",
+        "execution_time": 33.71213412284851,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 16:57:04.100197",
+        "client_ip": "127.0.0.1",
+        "client_port": 63528,
+        "command": "tracert",
+        "parameter": "google.com",
+        "execution_time": 34.16179394721985,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 16:57:12.120953",
+        "client_ip": "127.0.0.1",
+        "client_port": 57745,
+        "command": "tracert",
+        "parameter": "google.com",
+        "execution_time": 33.94795322418213,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 17:04:24.784949",
+        "client_ip": "127.0.0.1",
+        "client_port": 50138,
+        "command": "ping",
+        "parameter": "\u0633",
+        "execution_time": 1.2783660888671875,
+        "result": "Failure"
+    },
+    {
+        "timestamp": "2026-08-25 17:07:26.992955",
+        "client_ip": "127.0.0.1",
+        "client_port": 49396,
+        "command": "ping",
+        "parameter": "b.edu",
+        "execution_time": 0.13674712181091309,
+        "result": "Failure"
+    },
+    {
+        "timestamp": "2026-08-25 17:08:12.834864",
+        "client_ip": "127.0.0.1",
+        "client_port": 49400,
+        "command": "nslookup",
+        "parameter": "ritaj.edu",
+        "execution_time": 0.18975615501403809,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 17:08:30.783191",
+        "client_ip": "127.0.0.1",
+        "client_port": 49401,
+        "command": "nslookup",
+        "parameter": "google.com",
+        "execution_time": 0.10724735260009766,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 17:09:53.750937",
+        "client_ip": "127.0.0.1",
+        "client_port": 49670,
+        "command": "nslookup",
+        "parameter": "ali.com",
+        "execution_time": 0.20079827308654785,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 17:10:08.272870",
+        "client_ip": "127.0.0.1",
+        "client_port": 49671,
+        "command": "tracert",
+        "parameter": "ssssssssssssssssssssssssssss.com",
+        "execution_time": 0.06791925430297852,
+        "result": "Failure"
+    }
+]
