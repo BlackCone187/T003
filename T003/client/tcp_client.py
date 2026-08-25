@@ -1,7 +1,10 @@
 from socket import *
 
+from config.config_loader import load_config
+config = load_config()
+
 SERVER_NAME = "localhost"
-SERVER_PORT = 5462
+SERVER_PORT = config["tcp_port"]
 
 while True:
 
