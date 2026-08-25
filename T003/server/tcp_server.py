@@ -3,7 +3,16 @@ import threading
 import subprocess
 import time
 from datetime import datetime
+
 from server.logger import log_request
+from server.command_execute import ping
+from server.command_execute import tracert
+from server.command_execute import nslookup
+from server.command_execute import ipconfig
+from server.command_execute import route
+from server.command_execute import arp
+from server.command_execute import netstat
+    
 from config.config_loader import load_config
 
 config = load_config()
