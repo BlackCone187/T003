@@ -295,5 +295,95 @@
         "parameter": "google.com",
         "execution_time": 3.11385440826416,
         "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 21:23:27.901904",
+        "client_ip": "127.0.0.1",
+        "client_port": 56215,
+        "command": "ping",
+        "parameter": "google.com",
+        "execution_time": 3.0707132816314697,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 21:23:34.384089",
+        "client_ip": "127.0.0.1",
+        "client_port": 56216,
+        "command": "ipconfig",
+        "parameter": "",
+        "execution_time": 0.043691158294677734,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 21:23:35.366765",
+        "client_ip": "127.0.0.1",
+        "client_port": 56217,
+        "command": "route",
+        "parameter": "",
+        "execution_time": 0.027352333068847656,
+        "result": "Failure"
+    },
+    {
+        "timestamp": "2026-08-25 21:23:36.074308",
+        "client_ip": "127.0.0.1",
+        "client_port": 56218,
+        "command": "arp",
+        "parameter": "",
+        "execution_time": 0.023370981216430664,
+        "result": "Failure"
+    },
+    {
+        "timestamp": "2026-08-25 21:23:36.877745",
+        "client_ip": "127.0.0.1",
+        "client_port": 56219,
+        "command": "netstat",
+        "parameter": "",
+        "execution_time": 37.49044942855835,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 21:26:12.888201",
+        "client_ip": "127.0.0.1",
+        "client_port": 64487,
+        "command": "ipconfig",
+        "parameter": "",
+        "execution_time": 0.02584528923034668,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 21:26:47.187058",
+        "client_ip": "127.0.0.1",
+        "client_port": 50293,
+        "command": "ipconfig",
+        "parameter": "",
+        "execution_time": 0.0222320556640625,
+        "result": "Success"
+    },
+    {
+        "timestamp": "2026-08-25 21:26:47.760699",
+        "client_ip": "127.0.0.1",
+        "client_port": 50294,
+        "command": "route",
+        "parameter": "",
+        "execution_time": 0.013167381286621094,
+        "result": "Failure"
+    },
+    {
+        "timestamp": "2026-08-25 21:26:48.368904",
+        "client_ip": "127.0.0.1",
+        "client_port": 50296,
+        "command": "arp",
+        "parameter": "",
+        "execution_time": 0.014444112777709961,
+        "result": "Failure"
+    },
+    {
+        "timestamp": "2026-08-25 21:26:55.973836",
+        "client_ip": "127.0.0.1",
+        "client_port": 50297,
+        "command": "tracert",
+        "parameter": "facebook.com",
+        "execution_time": 39.26158046722412,
+        "result": "Success"
     }
 ]
